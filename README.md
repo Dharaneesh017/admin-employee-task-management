@@ -1,14 +1,6 @@
 # Task Management System (MERN Stack)
 
-<div align="center">
-  <h3>Project UI Preview</h3>
-  <img src="screenshots/login.png" width="400">
-  <img src="screenshots/register.png" width="400">
-  <br><br>
-  <img src="screenshots/admin.png" width="800">
-  <br>
-  <img src="screenshots/employee.png" width="800">
-</div>
+
 
 ---
 

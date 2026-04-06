@@ -20,7 +20,7 @@ const seedAdmin = async () => {
     const admin = await User.create({
       name: 'System Admin',
       email: 'admin@example.com',
-      password: 'adminpassword', // Will be hashed by model
+      password: 'adminpassword', 
       role: 'admin',
       isApproved: true,
     });

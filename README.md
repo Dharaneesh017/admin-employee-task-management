@@ -1,5 +1,17 @@
 # Task Management System (MERN Stack)
 
+<div align="center">
+  <h3>Project UI Preview</h3>
+  <img src="screenshots/login.png" width="400">
+  <img src="screenshots/register.png" width="400">
+  <br><br>
+  <img src="screenshots/admin.png" width="800">
+  <br>
+  <img src="screenshots/employee.png" width="800">
+</div>
+
+---
+
 This is a full-stack web application designed for better coordination between Administrators and Employees. It features a complete role-based access control (RBAC) system with an integrated approval workflow.
 
 ##  Key Features
@@ -69,11 +81,32 @@ Make sure you have **Node.js** and **MongoDB** installed and running on your loc
 - **Email**: `admin@example.com`
 - **Password**: `adminpassword`
 
-## Workflow for Evaluation
-To test the "Separate Portals" and "Approval System":
+## Database Schema
+
+The system uses two primary collections in MongoDB:
+
+### 1. User Model
+- **name**: Full name of the user.
+- **email**: Unique email for login.
+- **password**: Securely hashed with BcryptJS.
+- **role**: Either 'admin' (pre-seeded) or 'employee' (from registration).
+- **isApproved**: Boolean flag (default `false` for employees).
+
+### 2. Task Model
+- **title**: Heading of the task.
+- **description**: Detailed task instructions.
+- **status**: Current state ('pending', 'in-progress', 'completed').
+- **assignedTo**: Reference to the User ID who will complete the task.
+- **deadline**: Due date for the assignment.
+
+---
+
+## Workflow
 1. **Register**: Go to the `/register` page and create a new employee account.
-2. **Login Attempt**: Try logging in with the new account—you will be blocked with a "Pending Approval" message.
-3. **Approve**: Log in as the **Admin**, go to the **Users Control** tab, and click **Approve Access** for your new user.
+2. **Login Attempt**: Try logging in with the new account—you will see a "Pending Approval" block.
+3. **Approve**: Log in as **Admin**, go to **Users Control**, and click **Approve Access**.
+4. **Login Success**: Log back in as the **Employee** to see your personalized dashboard!
+
 ---
 
 ## API Testing (cURL)

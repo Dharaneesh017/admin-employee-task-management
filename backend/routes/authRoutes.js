@@ -8,8 +8,6 @@ const generateToken = (id) => {
     expiresIn: '30d',
   });
 };
-
-// @route   POST /api/auth/login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -29,8 +27,6 @@ router.post('/login', async (req, res) => {
     res.status(401).json({ message: 'Invalid email or password' });
   }
 });
-
-// @route   POST /api/auth/register
 router.post('/register', async (req, res) => {
   const { name, email, password, role } = req.body;
   const userExists = await User.findOne({ email });
@@ -44,7 +40,7 @@ router.post('/register', async (req, res) => {
     email,
     password,
     role: role || 'employee',
-    isApproved: (role === 'admin') // Admins are approved by default if created via seed or similar
+    isApproved: (role === 'admin') 
   });
 
   if (user) {
@@ -59,8 +55,6 @@ router.post('/register', async (req, res) => {
     res.status(400).json({ message: 'Invalid user data' });
   }
 });
-
-// @route   GET /api/auth/users
 router.get('/users', async (req, res) => {
   try {
     const users = await User.find({}).select('-password');
@@ -69,8 +63,6 @@ router.get('/users', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-// @route   PUT /api/auth/approve/:id
 router.put('/approve/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
